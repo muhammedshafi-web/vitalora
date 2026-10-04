@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>VITALORA — Physical Health & Fitness Tracking Platform</title>
+  
+  <!-- Favicon using uploaded brand logo -->
+  <link rel="icon" type="image/jpeg" href="assets/vitalora_logo.jpg" />
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              emerald: '#10b981',
+              cyan: '#06b6d4',
+              violet: '#8b5cf6',
+              dark: '#07090e'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Stylesheet with Glassmorphism, Animations, and Font Imports -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="antialiased selection:bg-emerald-500 selection:text-white">
+
+  <!-- Ambient Cosmic Background Glows -->
+  <div class="ambient-glow-1"></div>
+  <div class="ambient-glow-2"></div>
+
+  <!-- Root Application Mount Point -->
+  <div id="app"></div>
+
+  <!-- Global Toast Notification Layer -->
+  <div id="toastContainer" class="fixed bottom-20 md:bottom-6 right-6 z-50 flex flex-col space-y-2 pointer-events-none"></div>
+
+  <!-- Application Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/modals.js"></script>
+  <script src="js/components/Navbar.js"></script>
+  <script src="js/components/LandingPage.js"></script>
+  <script src="js/components/OnboardingModal.js"></script>
+  <script src="js/components/DashboardView.js"></script>
+  <script src="js/components/HealthView.js"></script>
+  <script src="js/components/ActivityView.js"></script>
+  <script src="js/components/WaterView.js"></script>
+  <script src="js/components/SleepView.js"></script>
+  <script src="js/components/NutritionView.js"></script>
+  <script src="js/components/StoreView.js"></script>
+  <script src="js/components/ProductDetailModal.js"></script>
+  <script src="js/components/CartModal.js"></script>
+  <script src="js/components/CheckoutModal.js"></script>
+  <script src="js/components/ProgressView.js"></script>
+  <script src="js/components/GoalsView.js"></script>
+  <script src="js/components/AiCoachView.js"></script>
+  <script src="js/components/ProfileView.js"></script>
+  <script src="js/components/WearablesView.js"></script>
+  <script src="js/components/TimelineView.js"></script>
+  <script src="js/components/AdminView.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
