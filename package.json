@@ -8,6 +8,7 @@
     "build": "node scripts/build.js && webpack --mode production"
   },
   "devDependencies": {
+    "vercel": "^62.2.0",
     "webpack": "^5.90.0",
     "webpack-cli": "^5.1.4"
   },
