@@ -5,7 +5,7 @@
   "main": "index.html",
   "scripts": {
     "start": "serve .",
-    "build": "webpack --mode production"
+    "build": "node scripts/build.js && webpack --mode production"
   },
   "devDependencies": {
     "webpack": "^5.90.0",
