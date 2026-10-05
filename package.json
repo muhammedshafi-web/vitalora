@@ -18,5 +18,9 @@
     "biometrics"
   ],
   "author": "VITALORA",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@capacitor/cli": "^7.6.9",
+    "@capacitor/core": "^8.5.2"
+  }
 }

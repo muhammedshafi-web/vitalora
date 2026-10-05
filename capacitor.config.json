@@ -1,0 +1,6 @@
+{
+  "appId": "com.vitalora.app",
+  "appName": "VITALORA",
+  "webDir": ".",
+  "bundledWebRuntime": false
+}
