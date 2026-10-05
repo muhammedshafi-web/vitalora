@@ -73,7 +73,7 @@ window.renderLandingPage = function() {
           <!-- Hero Visual: Interactive 3D Cosmic Interface Card (Featuring Image 1 & Live Biometric Widgets) -->
           <div class="lg:col-span-5 relative card-perspective-container">
             
-            <div class="relative card-3d-tilt rounded-3xl glass-panel p-4 sm:p-6 overflow-hidden border border-white/20 shadow-2xl bg-slate-900/90 text-white">
+            <div class="relative card-3d-tilt card-3d rounded-3xl glass-panel p-4 sm:p-6 overflow-hidden border border-white/20 shadow-2xl bg-slate-900/90 text-white">
               
               <!-- Featured Cosmic Interface Header (Image 1 Integration) -->
               <div class="relative h-48 sm:h-56 rounded-2xl overflow-hidden mb-5 group border border-purple-500/20">

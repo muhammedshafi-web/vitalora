@@ -25,10 +25,10 @@ window.renderDashboardView = function() {
   return `
     <div class="pt-24 pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
       
-      <!-- TOP GREETING & HEALTH SCORE HERO BANNER -->
-      <div class="rounded-3xl glass-panel p-6 sm:p-8 border border-white/20 bg-gradient-to-r from-emerald-500/10 via-cyan-500/5 to-purple-500/10 flex flex-col md:flex-row items-center justify-between gap-6">
+      <!-- TOP GREETING, 3D BIOMETRIC GLOBE & HEALTH SCORE HERO BANNER -->
+      <div class="rounded-3xl glass-panel p-6 sm:p-8 border border-white/20 bg-gradient-to-r from-emerald-500/10 via-cyan-500/5 to-purple-500/10 flex flex-col lg:flex-row items-center justify-between gap-6 card-3d">
         
-        <div class="space-y-2 text-center md:text-left">
+        <div class="space-y-2 text-center lg:text-left flex-1 depth-float">
           <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-500 text-xs font-semibold">
             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
             <span>Real-time Biometric Feed</span>
@@ -41,36 +41,46 @@ window.renderDashboardView = function() {
           </p>
         </div>
 
-        <!-- VITALORA HEALTH SCORE BADGE (Unique Feature) -->
-        <div 
-          onclick="window.showHealthScoreModal()" 
-          class="cursor-pointer group p-4 sm:p-5 rounded-2xl glass-panel border border-emerald-500/30 hover:border-emerald-500 transition-all bg-white/40 dark:bg-slate-900/60 shadow-xl flex items-center space-x-5 card-lift"
-          title="Click to view full VITALORA Health Score breakdown"
-        >
-          <div class="relative w-20 h-20 flex items-center justify-center">
-            <!-- Circular Radial SVG -->
-            <svg class="w-20 h-20 transform -rotate-90">
-              <circle cx="40" cy="40" r="34" stroke="currentColor" stroke-width="7" class="text-slate-200 dark:text-white/10 fill-none" />
-              <circle 
-                cx="40" cy="40" r="34" stroke="currentColor" stroke-width="7" 
-                class="text-emerald-500 fill-none transition-all duration-1000 stroke-round"
-                stroke-dasharray="213.6"
-                stroke-dashoffset="${213.6 - (healthScore.total / 100) * 213.6}"
-              />
-            </svg>
-            <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
-              <span class="text-xl font-black text-slate-900 dark:text-white leading-none">${healthScore.total}</span>
-              <span class="text-[9px] text-slate-500 dark:text-slate-400 font-bold">/100</span>
+        <div class="flex flex-col sm:flex-row items-center gap-4 depth-float">
+          <!-- Interactive 3D Biometric Globe (Drag to Rotate) -->
+          <div class="relative w-44 h-44 sm:w-48 sm:h-48 flex items-center justify-center p-2 rounded-2xl bg-slate-900/40 border border-white/10 shadow-lg">
+            <div id="dashboardGlobe3D" class="w-full h-full flex items-center justify-center"></div>
+            <div class="absolute bottom-1 px-2 py-0.5 rounded-full bg-slate-900/80 backdrop-blur border border-cyan-400/30 text-[9px] text-cyan-400 font-bold pointer-events-none">
+              3D Bio-Telemetry Sphere (Drag)
             </div>
           </div>
 
-          <div class="space-y-1">
-            <div class="flex items-center space-x-1">
-              <span class="text-xs uppercase font-bold tracking-widest text-emerald-500">HEALTH SCORE</span>
-              <svg class="w-3.5 h-3.5 text-emerald-500 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <!-- VITALORA HEALTH SCORE BADGE (Unique Feature) -->
+          <div 
+            onclick="window.showHealthScoreModal()" 
+            class="cursor-pointer group p-4 sm:p-5 rounded-2xl glass-panel border border-emerald-500/30 hover:border-emerald-500 transition-all bg-white/40 dark:bg-slate-900/60 shadow-xl flex items-center space-x-5 card-lift card-3d"
+            title="Click to view full VITALORA Health Score breakdown"
+          >
+            <div class="relative w-20 h-20 flex items-center justify-center">
+              <!-- Circular Radial SVG -->
+              <svg class="w-20 h-20 transform -rotate-90">
+                <circle cx="40" cy="40" r="34" stroke="currentColor" stroke-width="7" class="text-slate-200 dark:text-white/10 fill-none" />
+                <circle 
+                  cx="40" cy="40" r="34" stroke="currentColor" stroke-width="7" 
+                  class="text-emerald-500 fill-none transition-all duration-1000 stroke-round"
+                  stroke-dasharray="213.6"
+                  stroke-dashoffset="${213.6 - (healthScore.total / 100) * 213.6}"
+                />
+              </svg>
+              <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+                <span class="text-xl font-black text-slate-900 dark:text-white leading-none">${healthScore.total}</span>
+                <span class="text-[9px] text-slate-500 dark:text-slate-400 font-bold">/100</span>
+              </div>
             </div>
-            <div class="text-sm font-extrabold text-slate-900 dark:text-white">Optimal Wellness</div>
-            <div class="text-[11px] text-slate-500 dark:text-slate-400">Tap to inspect score formula</div>
+
+            <div class="space-y-1">
+              <div class="flex items-center space-x-1">
+                <span class="text-xs uppercase font-bold tracking-widest text-emerald-500">HEALTH SCORE</span>
+                <svg class="w-3.5 h-3.5 text-emerald-500 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div class="text-sm font-extrabold text-slate-900 dark:text-white">Optimal Wellness</div>
+              <div class="text-[11px] text-slate-500 dark:text-slate-400">Tap to inspect score formula</div>
+            </div>
           </div>
         </div>
 
@@ -118,7 +128,7 @@ window.renderDashboardView = function() {
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         
         <!-- CARD 1: STEPS (With animated circular progress indicator) -->
-        <div class="p-6 rounded-3xl glass-panel card-lift flex flex-col justify-between border border-slate-200/80 dark:border-white/10 cursor-pointer" onclick="window.navigateTo('activity')">
+        <div class="p-6 rounded-3xl glass-panel card-lift card-3d flex flex-col justify-between border border-slate-200/80 dark:border-white/10 cursor-pointer" onclick="window.navigateTo('activity')">
           <div class="flex items-center justify-between mb-4">
             <span class="text-xs uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400">Daily Steps</span>
             <span class="w-8 h-8 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-xs font-bold">🚶</span>
@@ -152,7 +162,7 @@ window.renderDashboardView = function() {
         </div>
 
         <!-- CARD 2: WATER (1.8L / 2.5L with +250ml, +500ml, +750ml quick add) -->
-        <div class="p-6 rounded-3xl glass-panel card-lift flex flex-col justify-between border border-slate-200/80 dark:border-white/10">
+        <div class="p-6 rounded-3xl glass-panel card-lift card-3d flex flex-col justify-between border border-slate-200/80 dark:border-white/10">
           <div class="flex items-center justify-between mb-2">
             <span class="text-xs uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400">Hydration Balance</span>
             <button onclick="window.navigateTo('water')" class="text-xs text-cyan-500 font-semibold hover:underline">View Page →</button>
@@ -186,7 +196,7 @@ window.renderDashboardView = function() {
         </div>
 
         <!-- CARD 3: SLEEP (7h 24m with quality rating) -->
-        <div class="p-6 rounded-3xl glass-panel card-lift flex flex-col justify-between border border-slate-200/80 dark:border-white/10 cursor-pointer" onclick="window.navigateTo('sleep')">
+        <div class="p-6 rounded-3xl glass-panel card-lift card-3d flex flex-col justify-between border border-slate-200/80 dark:border-white/10 cursor-pointer" onclick="window.navigateTo('sleep')">
           <div class="flex items-center justify-between mb-4">
             <span class="text-xs uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400">Sleep Duration</span>
             <span class="w-8 h-8 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-xs font-bold">🌙</span>
@@ -207,7 +217,7 @@ window.renderDashboardView = function() {
         </div>
 
         <!-- CARD 4: WEIGHT (68.4 kg with change from previous entry) -->
-        <div class="p-6 rounded-3xl glass-panel card-lift flex flex-col justify-between border border-slate-200/80 dark:border-white/10 cursor-pointer" onclick="window.navigateTo('health')">
+        <div class="p-6 rounded-3xl glass-panel card-lift card-3d flex flex-col justify-between border border-slate-200/80 dark:border-white/10 cursor-pointer" onclick="window.navigateTo('health')">
           <div class="flex items-center justify-between mb-4">
             <span class="text-xs uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400">Body Weight</span>
             <span class="w-8 h-8 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-xs font-bold">⚖️</span>
@@ -228,7 +238,7 @@ window.renderDashboardView = function() {
         </div>
 
         <!-- CARD 5: BMI (21.6 or 22.3 with category badge) -->
-        <div class="p-6 rounded-3xl glass-panel card-lift flex flex-col justify-between border border-slate-200/80 dark:border-white/10 cursor-pointer" onclick="window.navigateTo('health')">
+        <div class="p-6 rounded-3xl glass-panel card-lift card-3d flex flex-col justify-between border border-slate-200/80 dark:border-white/10 cursor-pointer" onclick="window.navigateTo('health')">
           <div class="flex items-center justify-between mb-4">
             <span class="text-xs uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400">Body Mass Index</span>
             <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-500">WHO Standard</span>
@@ -247,7 +257,7 @@ window.renderDashboardView = function() {
         </div>
 
         <!-- CARD 6: EXERCISE (45 min today workout duration) -->
-        <div class="p-6 rounded-3xl glass-panel card-lift flex flex-col justify-between border border-slate-200/80 dark:border-white/10 cursor-pointer" onclick="window.navigateTo('activity')">
+        <div class="p-6 rounded-3xl glass-panel card-lift card-3d flex flex-col justify-between border border-slate-200/80 dark:border-white/10 cursor-pointer" onclick="window.navigateTo('activity')">
           <div class="flex items-center justify-between mb-4">
             <span class="text-xs uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400">Exercise Duration</span>
             <span class="w-8 h-8 rounded-xl bg-rose-500/10 text-rose-500 flex items-center justify-center text-xs font-bold">⚡</span>
@@ -267,7 +277,7 @@ window.renderDashboardView = function() {
         </div>
 
         <!-- CARD 7: CALORIES (2,140 kcal consumed / burned) -->
-        <div class="p-6 rounded-3xl glass-panel card-lift flex flex-col justify-between border border-slate-200/80 dark:border-white/10 cursor-pointer" onclick="window.navigateTo('nutrition')">
+        <div class="p-6 rounded-3xl glass-panel card-lift card-3d flex flex-col justify-between border border-slate-200/80 dark:border-white/10 cursor-pointer" onclick="window.navigateTo('nutrition')">
           <div class="flex items-center justify-between mb-4">
             <span class="text-xs uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400">Energy & Calories</span>
             <span class="w-8 h-8 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center text-xs font-bold">🔥</span>
@@ -287,7 +297,7 @@ window.renderDashboardView = function() {
         </div>
 
         <!-- CARD 8: HEART RATE PLACEHOLDER (Real-time pulse) -->
-        <div class="p-6 rounded-3xl glass-panel card-lift flex flex-col justify-between border border-slate-200/80 dark:border-white/10">
+        <div class="p-6 rounded-3xl glass-panel card-lift card-3d flex flex-col justify-between border border-slate-200/80 dark:border-white/10">
           <div class="flex items-center justify-between mb-2">
             <span class="text-xs uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400">Resting Heart Rate</span>
             <span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-ping"></span>

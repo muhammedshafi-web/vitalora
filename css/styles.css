@@ -1,4 +1,4 @@
-/* VITALORA - Premium Health-Tech Design System & Animations */
+/* VITALORA - Premium Health-Tech Design System, 3D Animations & Glassmorphism */
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Cinzel:wght@600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
 
 :root {
@@ -34,8 +34,8 @@
 [data-theme="dark"] {
   --bg-primary: #07090e;
   --bg-secondary: #0c101a;
-  --bg-card: rgba(17, 24, 39, 0.7);
-  --bg-card-hover: rgba(24, 33, 53, 0.85);
+  --bg-card: rgba(17, 24, 39, 0.75);
+  --bg-card-hover: rgba(24, 33, 53, 0.88);
   --border-subtle: rgba(255, 255, 255, 0.08);
   --border-highlight: rgba(52, 211, 153, 0.35);
   --text-primary: #f8fafc;
@@ -68,6 +68,51 @@ body {
   overflow-x: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
   position: relative;
+}
+
+/* 3D PERSPECTIVE DEPTH SYSTEM */
+.perspective-container {
+  perspective: 1200px;
+}
+
+.card-3d {
+  transform-style: preserve-3d;
+  will-change: transform;
+  position: relative;
+}
+
+.depth-float {
+  transform: translateZ(24px);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.depth-layer {
+  transform: translateZ(12px);
+  transform-style: preserve-3d;
+}
+
+/* 3D Floating Levitation Animation */
+@keyframes levitate3D {
+  0% { transform: translateY(0px) rotateZ(0deg) translateZ(15px); }
+  50% { transform: translateY(-7px) rotateZ(0.5deg) translateZ(25px); }
+  100% { transform: translateY(0px) rotateZ(0deg) translateZ(15px); }
+}
+
+.animate-levitate-3d {
+  animation: levitate3D 5s infinite ease-in-out;
+  transform-style: preserve-3d;
+}
+
+/* 3D Holographic Pulse Aura */
+@keyframes holoPulse {
+  0% { transform: scale(0.96) translateZ(0); opacity: 0.4; }
+  50% { transform: scale(1.04) translateZ(10px); opacity: 0.85; filter: drop-shadow(0 0 15px rgba(16, 185, 129, 0.6)); }
+  100% { transform: scale(0.96) translateZ(0); opacity: 0.4; }
+}
+
+.holo-pulse {
+  animation: holoPulse 3.5s infinite ease-in-out;
 }
 
 /* Background Cosmic Ambient Glows */
@@ -111,8 +156,12 @@ body {
   box-shadow: var(--glass-glow), var(--glass-shadow);
 }
 
+.card-lift {
+  transform-style: preserve-3d;
+}
+
 .card-lift:hover {
-  transform: translateY(-4px);
+  transform: translateY(-4px) scale3d(1.015, 1.015, 1.015);
 }
 
 /* Logo Brand Styling */
@@ -232,31 +281,6 @@ body {
   background: rgba(0, 0, 0, 0.65);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-}
-
-/* Mobile Bottom Sheet Drawer */
-@media (max-width: 768px) {
-  .mobile-bottom-sheet {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    max-height: 90vh;
-    border-radius: 1.5rem 1.5rem 0 0;
-    z-index: 60;
-  }
-}
-
-/* Shimmer animation for skeletons */
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-.skeleton-shimmer {
-  background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.03) 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.8s infinite;
 }
 
 /* Toast alert notification animation */

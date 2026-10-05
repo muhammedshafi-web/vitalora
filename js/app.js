@@ -130,6 +130,23 @@ window.renderApp = function() {
     <div id="cartModalContainer"></div>
     <div id="checkoutModalContainer"></div>
   `;
+
+  // Render omnipresent Floating AI Chatbot
+  if (typeof window.renderFloatingChatbot === "function") {
+    window.renderFloatingChatbot();
+  }
+
+  // Re-bind Universal 3D Card Tilt & Specular Reflection
+  if (typeof window.init3DTilt === "function") {
+    window.init3DTilt();
+  }
+
+  // Render 3D Biometric Globe if current route is dashboard
+  if (activeRoute === "dashboard" && window.vitalora3D) {
+    setTimeout(() => {
+      window.vitalora3D.renderBiometricGlobe('dashboardGlobe3D');
+    }, 60);
+  }
 };
 
 // Touch Gestures for Mobile Viewport (Left/Right swipe between primary routes)
@@ -183,7 +200,12 @@ document.addEventListener("keydown", (e) => {
 
 // App Initialization
 window.addEventListener("DOMContentLoaded", () => {
+  // Initialize 3D Cosmic Background Particle Constellation
+  if (window.vitalora3D && typeof window.vitalora3D.initBackground === "function") {
+    window.vitalora3D.initBackground();
+  }
+
   // Initial render
   window.renderApp();
-  console.log("VITALORA Physical Health & Fitness System Initialized.");
+  console.log("VITALORA Physical Health & Fitness System Initialized with 3D Holographic Telemetry & AI.");
 });

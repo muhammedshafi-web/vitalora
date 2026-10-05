@@ -39,11 +39,17 @@ while ($listener.IsListening) {
             }
             $res.ContentType = $mime
             $res.StatusCode = 200
-            $res.OutputStream.Write($bytes, 0, $bytes.Length)
+            $res.ContentLength64 = $bytes.Length
+            if ($req.HttpMethod -ne "HEAD") {
+                $res.OutputStream.Write($bytes, 0, $bytes.Length)
+            }
         } else {
             $res.StatusCode = 404
             $err = [System.Text.Encoding]::UTF8.GetBytes("404 Not Found")
-            $res.OutputStream.Write($err, 0, $err.Length)
+            $res.ContentLength64 = $err.Length
+            if ($req.HttpMethod -ne "HEAD") {
+                $res.OutputStream.Write($err, 0, $err.Length)
+            }
         }
         $res.OutputStream.Close()
     } catch {
