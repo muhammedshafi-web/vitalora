@@ -133,15 +133,28 @@
 - Product Manager: Add new products, edit live prices, update stock, and delete items.
 - Orders Fulfillment list: View placed orders, customer delivery addresses, and payment modes.
 
+### 19. Omnipresent AI Health Coach Chatbot Widget
+- Floating 3D launcher orb docked across all pages with live telemetry status.
+- Real-time biometric vitals ribbon displaying Steps, Water, Sleep, and Health Score.
+- Built-in Voice Speech Synthesis (`speechSynthesis`) with audio toggle (`🔊` / `🔇`).
+- Quick prompt chips for instant meal planning, sleep optimization, and direct hydration logging (`+250ml`).
+
+### 20. 3D Holographic Telemetry & Universal Card Tilt
+- **Interactive 3D Biometric Sphere**: Three.js dual-orbital sphere with mouse drag controls and dynamic telemetry nodes.
+- **Cosmic Constellation Particle Background**: Mouse parallax responsive particle field.
+- **Universal 3D Card Physics**: Dynamic tilt angles and specular light reflection tracking across all cards.
+
 ---
 
 ## 🛠️ Technology Architecture
 
 - **Frontend Core**: Vanilla ES6+ Component Architecture with zero-build dependency friction.
+- **3D Graphics**: Three.js WebGL Engine (`threeScene.js`) + Custom Physics Engine (`tilt3d.js`).
 - **Styling**: Tailwind CSS CDN + custom design tokens, glassmorphism, animations, and custom scrollbars in `css/styles.css`.
 - **Typography**: Google Fonts (*Plus Jakarta Sans* for high-tech UI, *Cinzel* & *Playfair Display* for luxury branding).
 - **Icons**: Responsive SVG inline vectors & Lucide icon designs.
 - **State & Database**: Reactive `VitaloraStore` class with `localStorage` automatic caching and live pub/sub updates.
+- **CI/CD**: GitHub Actions workflow (`.github/workflows/webpack.yml`) configured with Webpack 5.
 - **Portability**: Opens directly in any browser (`index.html`) or served over `serve.ps1` on `http://localhost:3000/`.
 
 ---
@@ -160,3 +173,4 @@ The server will start at `http://localhost:3000/` and open automatically.
 
 ### Option C: Direct File Opening
 Double-click `index.html` to open directly in Google Chrome, Microsoft Edge, Firefox, or Safari. All features, animations, local state, and interactions work immediately!
+

@@ -5,7 +5,11 @@
   "main": "index.html",
   "scripts": {
     "start": "serve .",
-    "build": "echo 'Static application ready'"
+    "build": "webpack --mode production"
+  },
+  "devDependencies": {
+    "webpack": "^5.90.0",
+    "webpack-cli": "^5.1.4"
   },
   "keywords": [
     "fitness",
